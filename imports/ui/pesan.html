@@ -1,0 +1,78 @@
+
+<template name="cek">
+	{{#if currentUser}}
+		{{>pesan}}
+	{{else}}
+		{{>login}}
+	{{/if}}
+</template>
+
+<template name="pesan">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<body>
+		{{> navbar}}
+		<div class="row">
+		<div class="col s12 m4 l3"></div>
+		<div class="col s12 m4 l6">
+			<div class="card">
+				<form class="reguler">
+				<div class="card-content">
+					<center><h2>Pesan Kamar {{tipe}}</h2></center>
+						<input id="tipeKamar" type="hidden" value={{tipe}}>
+						{{carikamar}}
+						<input id="kamar" type="hidden" value="{{kamar}}">
+				     <div class="row">
+				     	<div class="input-field col s6"> 
+					    	<h5 style="color: #757575 ">{{currentUser.username}}</h5>
+						</div>
+					    <div class="input-field col s6"> 
+					    	<h5 style="color: #757575">{{email}} </h5>
+						</div>
+					</div>
+				      <div class="row">
+				        <div class="input-field col s4">
+				          <p class="datepicker">Mulai tanggal</p>
+				          <input id="start" type="date" class="datepicker">
+				        </div>
+				        <div class="input-field col s4">
+				          <p class="datepicker">Sampai tanggal</p>
+				          <input id="end" type="date" class="datepicker">
+				        </div>
+				        <div class="input-field col s4">
+				          <p>Banyak Hari</p>
+				          <input disabled id="hari" type="text" class="validate" style="color: black">
+				        </div>
+				      </div>
+				      <div class="row">
+				        <div class="input-field col s3">
+				          	<label style="color: #616161">Harga per hari: Rp </label> 
+				        </div>
+				        <div class="input-field col s5">
+				          <input disabled id="harga" type="text" value={{harga}} class="validate" style="color: #616161">
+				         </div>
+				      </div>
+				      <div class="row">
+				        <div class="input-field col s2">
+				          	<label style="color: #2962ff; font-size: 20px">Total:</label> 
+				        </div>
+				        <div class="input-field col s4">
+				        	<input disabled id="total" type="text" class="validate" style="color: #2962ff; font-size: 20px" value=0>
+				        </div>
+				        <div class="input-field col s5">
+							<input type="submit tooltipped" id="btn_bayar" class="waves-effect waves-light btn" value="PESAN SEKARANG">
+						</div>
+				      </div>
+			    </div>
+				</form>
+		    </div>
+	    </div>
+	    </div>
+	</body>	
+</template>
+
+<template name="pesanan">
+	{{>navbar}}
+	<div class="container">
+		<h1>SUKSES</h1>	
+	</div>
+</template>

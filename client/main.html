@@ -1,0 +1,72 @@
+
+<template name="home">
+  <head>
+    <title>hotelku</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+    
+  <body>
+    {{> navbar}}
+    <div class="container">
+      <h4 class="header">Tipe Kamar</h4>
+      <ul>
+        {{#each tipeKamar}}
+          {{>konten}}
+        {{/each}}
+      </ul>
+    </div>
+  </body>
+</template>
+
+
+<template name="navbar">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <nav>
+    <div class="nav-wrapper grey darken-4">
+      <div class="container">
+      <a href="/" class="brand-logo">Hotelku</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        {{#if currentUser}}
+          <li><i class="material-icons prefix" id="refresh">account_circle</i></li>
+          <li><a class="dropdown-button" href="#!" data-activates="dropdownUser">{{currentUser.username}}<i class="material-icons right">arrow_drop_down</i></a></li>
+          <!-- <li><a href="#" class="logout" style="color: #e53935" >Logout</a></li>   -->
+        {{else}}
+          <li><a href="/login">Login</a></li>
+        {{/if}}
+      </ul>
+      </div>
+    </div>
+  </nav>
+
+  <ul id="dropdownUser" class="dropdown-content">
+  <li><a href="#!" id="profil">Profil</a></li>
+  <li><a href="#!">Pesanan</a></li>
+  <li class="divider"></li>
+  <li><a href="#!" class="logout" style="color: #e53935">Logout</a></li>  
+</ul>
+</template>
+
+<template name="konten">
+  <!-- <div class="row"> -->
+  <div class="col s12 m7">
+    <div class="card horizontal">
+      <div class="card-image">
+        <img src="/vip.jpg">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <h4 id="tipe">{{tipe}}</h4>
+          <p>Fasilitas: {{fasilitas}}</p>
+          <p>Kapasitas: {{kapasitas}} orang</p>
+          <h3 style="color: #e53935">Rp. {{harga}}/hari</h3>
+
+        </div>
+        <div class="card-action">
+          <a href="/pesan?_id={{tipe}}" id="btnpesan" class="waves-effect waves-light btn light-blue accent-4">Pesan Kamar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+  
+
